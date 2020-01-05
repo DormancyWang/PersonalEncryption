@@ -19,6 +19,6 @@ public class Test {
         process.rev_P();
         System.out.println(Arrays.toString(process.getDe_Temp()));
         process.Affien_decrytion();
-        System.out.println(Arrays.toString(process.getDe_Plaintext()));
+
     }
 }

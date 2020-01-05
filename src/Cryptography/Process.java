@@ -1,11 +1,35 @@
 package Cryptography;
 
+import java.net.http.HttpConnectTimeoutException;
+
 public class Process {
     private char[] Plaintext;
     private char[] Ciphertext;
     private char[] en_Temp;
     private char[] de_Temp;
     private char[] de_Plaintext;
+
+    public String getHex(){
+        byte[] temp1 = new byte[Ciphertext.length];
+        for(int i=0;i<Ciphertext.length;i++){
+            temp1[i] = (byte) Ciphertext[i];
+        }
+
+        return bytesToHexString(temp1);
+    }
+
+    private String bytesToHexString(byte[] bytes) {
+        if (bytes == null) return null;
+        StringBuilder ret = new StringBuilder(2 * bytes.length);
+        for (int i = 0; i < bytes.length; i++) {
+            int b;
+            b = 0x0f & (bytes[i] >> 4);
+            ret.append("0123456789abcdef".charAt(b));
+            b = 0x0f & bytes[i];
+            ret.append("0123456789abcdef".charAt(b));
+        }
+        return ret.toString();
+    }
 
     public void Affine_encrytion(){
         //初始化密文空间
